@@ -77,3 +77,12 @@ def consultar_reinf():
         "portal": "EFD-Reinf",
         "mensagem": "Conector EFD-Reinf ainda será implementado"
     }
+
+@app.post("/consultar/dief-ma")
+def consultar_dief_ma():
+    return {
+        "status": "aguardando_implementacao",
+        "portal": "SEFAZ-MA / DIEF-MA",
+        "obrigacao": "DIEF-MA",
+        "mensagem": "Conector DIEF-MA será implementado para consultar envio/recibo no ambiente da SEFAZ-MA"
+    }
