@@ -22,12 +22,45 @@ def version():
         "version": "1.0.0"
     }
 
+from pydantic import BaseModel
+from datetime import datetime
+import base64
+from cryptography.hazmat.primitives.serialization import pkcs12
+
+
+class CertificadoRequest(BaseModel):
+    arquivo_pfx_base64: str
+    senha: str
+
+
 @app.post("/validar-certificado")
-def validar_certificado():
-    return {
-        "status": "ok",
-        "mensagem": "Endpoint de validação de certificado criado com sucesso"
-    }
+def validar_certificado(dados: CertificadoRequest):
+    try:
+        pfx_bytes = base64.b64decode(dados.arquivo_pfx_base64)
+
+        private_key, certificate, additional_certificates = pkcs12.load_key_and_certificates(
+            pfx_bytes,
+            dados.senha.encode()
+        )
+
+        subject = certificate.subject.rfc4514_string()
+        issuer = certificate.issuer.rfc4514_string()
+        validade = certificate.not_valid_after_utc.strftime("%Y-%m-%d")
+
+        return {
+            "status": "valido",
+            "titular": subject,
+            "emissor": issuer,
+            "validade": validade,
+            "mensagem": "Certificado A1 lido com sucesso"
+        }
+
+    except Exception as e:
+        return {
+            "status": "erro",
+            "mensagem": "Não foi possível ler o certificado. Verifique o arquivo .pfx e a senha.",
+            "erro": str(e)
+        }
 
 @app.post("/consultar/esocial")
 def consultar_esocial():
