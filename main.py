@@ -86,3 +86,10 @@ def consultar_dief_ma():
         "obrigacao": "DIEF-MA",
         "mensagem": "Conector DIEF-MA será implementado para consultar envio/recibo no ambiente da SEFAZ-MA"
     }
+
+@app.post("/importar/historico-receita")
+def importar_historico_receita():
+    return {
+        "status": "aguardando_implementacao",
+        "mensagem": "Endpoint criado para importar declarações já transmitidas na Receita Federal, Simples Nacional e e-CAC"
+    }
