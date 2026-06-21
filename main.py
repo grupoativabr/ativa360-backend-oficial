@@ -127,3 +127,42 @@ def consultar_pgdas():
             }
         ]
     }
+
+@app.post("/certidoes/emitir")
+def emitir_certidao():
+    return {
+        "status": "aguardando_implementacao",
+        "mensagem": "Endpoint criado para emissão automática de certidões"
+    }
+
+@app.post("/certidoes/receita-pgfn")
+def certidao_receita_pgfn():
+    return {
+        "status": "aguardando_implementacao",
+        "portal": "Receita Federal / PGFN",
+        "mensagem": "Conector será implementado para emitir CND Receita/PGFN"
+    }
+
+@app.post("/certidoes/fgts")
+def certidao_fgts():
+    return {
+        "status": "aguardando_implementacao",
+        "portal": "FGTS",
+        "mensagem": "Conector será implementado para emitir CRF FGTS"
+    }
+
+@app.post("/certidoes/cndt")
+def certidao_cndt():
+    return {
+        "status": "aguardando_implementacao",
+        "portal": "TST / CNDT",
+        "mensagem": "Conector será implementado para emitir CNDT"
+    }
+
+@app.post("/certidoes/sefaz-ma")
+def certidao_sefaz_ma():
+    return {
+        "status": "aguardando_implementacao",
+        "portal": "SEFAZ-MA",
+        "mensagem": "Conector será implementado para emitir certidão estadual do Maranhão"
+    }
