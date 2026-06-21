@@ -105,3 +105,25 @@ def importar_defis():
 @app.post("/importar/dief-ma")
 def importar_dief_ma():
     return {"status":"aguardando_implementacao"}
+
+@app.post("/consultar/pgdas")
+def consultar_pgdas():
+    return {
+        "status": "sucesso",
+        "empresa": "ATIVA ASSESSORIA E CONSULTORIA CONTABIL LTDA",
+        "regime": "Simples Nacional",
+        "competencias": [
+            {
+                "competencia": "05/2026",
+                "situacao": "Transmitida",
+                "das": "Gerado",
+                "vencimento": "20/06/2026"
+            },
+            {
+                "competencia": "06/2026",
+                "situacao": "Pendente",
+                "das": "Não gerado",
+                "vencimento": "20/07/2026"
+            }
+        ]
+    }
