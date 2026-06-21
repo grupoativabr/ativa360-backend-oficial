@@ -93,3 +93,15 @@ def importar_historico_receita():
         "status": "aguardando_implementacao",
         "mensagem": "Endpoint criado para importar declarações já transmitidas na Receita Federal, Simples Nacional e e-CAC"
     }
+
+@app.post("/importar/pgdas")
+def importar_pgdas():
+    return {"status":"aguardando_implementacao"}
+
+@app.post("/importar/defis")
+def importar_defis():
+    return {"status":"aguardando_implementacao"}
+
+@app.post("/importar/dief-ma")
+def importar_dief_ma():
+    return {"status":"aguardando_implementacao"}
